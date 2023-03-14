@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-void wincheck(int grid[3][3]);
+void wincheck(char grid[3][3]);
 
 int main()
 {
@@ -14,7 +14,7 @@ int main()
 	return 0;
 }
 
-void wincheck(int grid[3][3]) {
+void wincheck(char grid[3][3]) {
 	// Call this function with wincheck(board); in int main()
 	int i, j, k; // i is the variable for rows, j is the variable for columns, k is the variable for checking the diagonals
 

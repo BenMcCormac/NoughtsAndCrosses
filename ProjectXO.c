@@ -17,13 +17,11 @@ int main()
     {
         player = (player % 2) ? 1 : 2;
             
-        printf("Player %d,", player);
+        printf("Player %d\nStart-->", player);
         scanf_s("%d", &choice);
-
-        mark = (player == 1) ? 'X' : 'O';
-
-        for (i = 0; i < 5; i++)
-        {
+    
+  
+        mark = (player == 1) ? 'X' : 'O';    
 
             if (choice == 1 && grid[1] == '1')
                 grid[1] = mark;
@@ -55,9 +53,22 @@ int main()
             else
             {
                 printf("Incorrect move\n try again");
-                return(0);
+
             }
+      
+            printf_s("________________\n");
+            printf_s("|    |    |    |\n");
+            printf_s("|   %c|  %c |  %c |\n", grid[9], grid[8], grid[7]);
+            printf_s("|____|____|____|\n");
+            printf_s("|    |    |    |\n");
+            printf_s("|   %c|  %c |  %c |\n", grid[6], grid[5], grid[4]);
+            printf_s("|____|____|____|\n");
+            printf_s("|    |    |    |\n");
+            printf_s("|   %c|  %c |  %c |\n", grid[3], grid[2], grid[1]);
+            printf_s("|____|____|____|\n");
             
+            system('cls');
         }
-    }
+    
+     return(0);
 }

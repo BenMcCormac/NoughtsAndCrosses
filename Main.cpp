@@ -1,18 +1,19 @@
 //This Will Be The Main File
 
-int compTurn(int x, int y, int b[3][3]);
-int playerTurn(int b[3][3]);
+int compTurn(int x, int y, int* pB);
+int playerTurn(int* pB);
 
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
-#include <math.h>
+#include <conio.h>
+#include <time.h>
 
 int main()
 {
-	int board[3][3]={0};
-	int randomC, randomR, random3, i, j, g = 0;
+	int randomC, randomR, random3, i, j, z, g = 0;
 	const int GSIZE = 3;
+	int b[GSIZE][GSIZE], grid[GSIZE][GSIZE];
+
 
 	//These are my random functions
 	srand(time(0));
@@ -31,7 +32,15 @@ int main()
 
 	/*While loop for maximun game turns*/
 
-	board[3][3] = playerTurn(board[3][3]);
+	randomC = rand() % GSIZE;
+	randomR = rand() % GSIZE;
+
+	int* pB;
+	z = b[0][0];
+	pB = &z;
+
+
+	b[3][3] = playerTurn(pB);
 
 	while (g < 4)
 	{
@@ -39,10 +48,7 @@ int main()
 		randomC = rand() % GSIZE;
 		randomR = rand() % GSIZE;
 
-		/*Computer Turn Function*/
-		board[3][3] = compTurn(randomC, randomR);
-		/*Player Turn Function*/
-		board[3][3] = playerTurn();
+		
 
 		printf("______________________________________________________\n");
 		g++;
@@ -52,7 +58,7 @@ int main()
 
 	return 0;
 }
-int compTurn(int x, int y)
+int compTurn(int x, int y, int*pB)
 {
 	int b[3][3];
 	int i, j, h = 0;
@@ -79,9 +85,9 @@ int compTurn(int x, int y)
 			}
 			printf("\n");
 		}
-		return b[3][3];
+		return *pB;
 }
-int playerTurn()
+int playerTurn(int* pB)
 {
 	int i = 0, p;
 	int b[3][3];

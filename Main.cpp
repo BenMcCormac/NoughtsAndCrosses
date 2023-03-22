@@ -12,7 +12,7 @@ int main()
 {
 	int randomC, randomR, random3, i, j, z, g = 0;
 	const int GSIZE = 3;
-	char b[GSIZE][GSIZE] = { 0 };
+	char b[GSIZE][GSIZE] = {0};
 
 
 	//These are my random functions

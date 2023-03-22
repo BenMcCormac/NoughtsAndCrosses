@@ -18,7 +18,6 @@ int main()
 	//These are my random functions
 	srand(time(0));
 
-
 //Random number testing
 //for (i = 0; i < 3; i++)
 //{

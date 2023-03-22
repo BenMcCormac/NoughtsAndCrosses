@@ -19,18 +19,18 @@ int main()
 	srand(time(0));
 
 
-	//Random number testing
-	//for (i = 0; i < 3; i++)
-	//{
-	//	for (j = 0; j < 3; j++)
-	//		{
-	//			random1 = rand() % GSIZE;
-	//			printf("%i  ", randomR);
-	//		}
-	//		printf("\n");
-	//}
+  //Random number testing
+  //for (i = 0; i < 3; i++)
+  //{
+  //	for (j = 0; j < 3; j++)
+  //		{
+  //			random1 = rand() % GSIZE;
+  //			printf("%i  ", randomR);
+  //		}
+  //		printf("\n");
+  //}
 
-		/*While loop for maximun game turns*/
+	/*While loop for maximun game turns*/
 
 	char grid[10] = { '0','1','2','3','4','5','6','7','8','9' };
 

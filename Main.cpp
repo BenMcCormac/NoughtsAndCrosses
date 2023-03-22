@@ -1,7 +1,7 @@
 //This Will Be The Main File
 
-void compTurn(int* pB);
-void playerTurn(int* pB);
+void compTurn(char* pB);
+void playerTurn(char* pB);
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,7 +12,7 @@ int main()
 {
 	int randomC, randomR, random3, i, j, z, g = 0;
 	const int GSIZE = 3;
-	int b[GSIZE][GSIZE] = {0}, grid[GSIZE][GSIZE];
+	char b[GSIZE][GSIZE] = {0};
 
 
 	//These are my random functions
@@ -32,18 +32,80 @@ int main()
 
 	/*While loop for maximun game turns*/
 
+	char grid[10] = { '0','1','2','3','4','5','6','7','8','9' };
+
+	printf_s("[~~~~~~~~~~~~~~~~~~~~~~~~~~~~]\n");
+	printf_s("[ _______  _____  ______     ] \n");
+	printf_s("[    |       |    |          ] \n");
+	printf_s("[    |       |    |          ] \n"),
+	printf_s("[    |       |    |          ] \n");
+	printf_s("[    |     __|__  |_____     ] \n");
+	printf_s("[                            ] \n");
+	printf_s("[ _______  _____  ______     ] \n");
+	printf_s("[    |    |    |  |          ] \n");
+	printf_s("[    |    |____|  |          ] \n");
+	printf_s("[    |    |    |  |          ] \n");
+	printf_s("[    |    |    |  |_____     ] \n");
+	printf_s("[                            ] \n");
+	printf_s("[ _______  _____  ______     ] \n");
+	printf_s("[    |     |   |  |          ] \n");
+	printf_s("[    |     |   |  |_____     ] \n");
+	printf_s("[    |     |   |  |          ] \n");
+	printf_s("[    |     |___|  |_____     ] \n");
+	printf_s("[~~~~~~~~~~~~~~~~~~~~~~~~~~~~] \n");
+	printf_s("                               \n");
+
+	int player = 1;
+	int choice;
+
+	char mark;
+
+	
+
+	printf_s("________________\n");
+	printf_s("|    |    |    |\n");
+	printf_s("|   %c|  %c |  %c |\n", b[0][0], b[0][1], b[0][2]);
+	printf_s("|____|____|____|\n");
+	printf_s("|    |    |    |\n");
+	printf_s("|   %c|  %c |  %c |\n", b[1][0], b[1][1], b[1][2]);
+	printf_s("|____|____|____|\n");
+	printf_s("|    |    |    |\n");
+	printf_s("|   %c|  %c |  %c |\n", b[2][0], b[2][1], b[2][2]);
+	printf_s("|____|____|____|\n");
+	
+
 	randomC = rand() % GSIZE;
 	randomR = rand() % GSIZE;
 
-	int* pB = &b[0][0];
+	char* pB = &b[0][0];
 
 	playerTurn(pB);
 
 	while (g < 4)
 	{
+		printf_s("________________\n");
+		printf_s("|    |    |    |\n");
+		printf_s("|   %c|  %c |  %c |\n", b[0][0], b[0][1], b[0][2]);
+		printf_s("|____|____|____|\n");
+		printf_s("|    |    |    |\n");
+		printf_s("|   %c|  %c |  %c |\n", b[1][0], b[1][1], b[1][2]);
+		printf_s("|____|____|____|\n");
+		printf_s("|    |    |    |\n");
+		printf_s("|   %c|  %c |  %c |\n", b[2][0], b[2][1], b[2][2]);
+		printf_s("|____|____|____|\n");
 
 		compTurn(pB);
 
+		printf_s("________________\n");
+		printf_s("|    |    |    |\n");
+		printf_s("|   %c|  %c |  %c |\n", b[0][0], b[0][1], b[0][2]);
+		printf_s("|____|____|____|\n");
+		printf_s("|    |    |    |\n");
+		printf_s("|   %c|  %c |  %c |\n", b[1][0], b[1][1], b[1][2]);
+		printf_s("|____|____|____|\n");
+		printf_s("|    |    |    |\n");
+		printf_s("|   %c|  %c |  %c |\n", b[2][0], b[2][1], b[2][2]);
+		printf_s("|____|____|____|\n");
 
 		playerTurn(pB);
 
@@ -51,13 +113,22 @@ int main()
 		g++;
 	}
 
-	printf("X | O | X\n--|---|--\nX | X | O\n--|---|--\nO | O | X");
+	printf_s("________________\n");
+	printf_s("|    |    |    |\n");
+	printf_s("|   %c|  %c |  %c |\n", b[0][0], b[0][1], b[0][2]);
+	printf_s("|____|____|____|\n");
+	printf_s("|    |    |    |\n");
+	printf_s("|   %c|  %c |  %c |\n", b[1][0], b[1][1], b[1][2]);
+	printf_s("|____|____|____|\n");
+	printf_s("|    |    |    |\n");
+	printf_s("|   %c|  %c |  %c |\n", b[2][0], b[2][1], b[2][2]);
+	printf_s("|____|____|____|\n");
 
 	return 0;
 }
-void compTurn(int*pB)
+void compTurn(char*pB)
 {
-	int f[3][3] = { *(pB + 0), *(pB + 1), *(pB + 2), *(pB + 3), *(pB + 4), *(pB + 5), *(pB + 6), *(pB + 7), *(pB + 8), };
+	char f[3][3] = { *(pB + 0), *(pB + 1), *(pB + 2), *(pB + 3), *(pB + 4), *(pB + 5), *(pB + 6), *(pB + 7), *(pB + 8), };
 	int i, j, h = 0, x, y, t = 0;
 	const int GSIZE = 3;
 	int* p;
@@ -90,61 +161,59 @@ void compTurn(int*pB)
 					{
 						if (x == 0)
 						{
-							*(pB + 0) = 1;
+							*(pB + 0) = 'X';
 						}
 						if (x == 1)
 						{
-							*(pB + 1) = 1;
+							*(pB + 1) = 'X';
 						}
 						if (x == 2)
 						{
-							*(pB + 2) = 1;
+							*(pB + 2) = 'X';
 						}
 					}
 					if (y == 1)
 					{
 						if (x == 0)
 						{
-							*(pB + 3) = 1;
+							*(pB + 3) = 'X';
 						}
 						if (x == 1)
 						{
-							*(pB + 4) = 1;
+							*(pB + 4) = 'X';
 						}
 						if (x == 2)
 						{
-							*(pB + 5) = 1;
+							*(pB + 5) = 'X';
 						}
 					}
 					if (y == 2)
 					{
 						if (x == 0)
 						{
-							*(pB + 6) = 1;
+							*(pB + 6) = 'X';
 						}
 						if (x == 1)
 						{
-							*(pB + 7) = 1;
+							*(pB + 7) = 'X';
 						}
 						if (x == 2)
 						{
-							*(pB + 8) = 1;
+							*(pB + 8) = 'X';
 						}
 					}
 
 					h++;
 				}
-				printf("	%i", f[i][j]);
 			}
-			printf("\n");
 		}
 	}
 }
-void playerTurn(int* pB)
+void playerTurn(char*pB)
 {
 	int i = 0, p;
 	int c1 = 1, c0 = 0, c2 = 2;
-	int f[3][3] = { *(pB + 0), *(pB + 1), *(pB + 2), *(pB + 3), *(pB + 4), *(pB + 5), *(pB + 6), *(pB + 7), *(pB + 8), };
+	char f[3][3] = { *(pB + 0), *(pB + 1), *(pB + 2), *(pB + 3), *(pB + 4), *(pB + 5), *(pB + 6), *(pB + 7), *(pB + 8), };
 
 
 
@@ -158,7 +227,7 @@ void playerTurn(int* pB)
 		{
 			if (f[c0][c0] == 0)
 			{
-				*(pB+0) = 2;
+				*(pB+0) = 'O';
 				i++;
 			}
 			else
@@ -170,7 +239,7 @@ void playerTurn(int* pB)
 		{
 			if (f[c0][c1] == 0)
 			{
-				*(pB + 1) = 2;
+				*(pB + 1) = 'O';
 				i++;
 			}
 			else
@@ -182,7 +251,7 @@ void playerTurn(int* pB)
 		{
 			if (f[c0][c2] == 0)
 			{
-				*(pB + 2) = 2;
+				*(pB + 2) = 'O';
 				i++;
 			}
 			else
@@ -194,7 +263,7 @@ void playerTurn(int* pB)
 		{
 			if (f[c1][c0] == 0)
 			{
-				*(pB + 3) = 2;
+				*(pB + 3) = 'O';
 				i++;
 			}
 			else
@@ -206,7 +275,7 @@ void playerTurn(int* pB)
 		{
 			if (f[c1][c1] == 0)
 			{
-				*(pB + 4) = 2;
+				*(pB + 4) = 'O';
 				i++;
 			}
 			else
@@ -218,7 +287,7 @@ void playerTurn(int* pB)
 		{
 			if (f[c1][c2] == 0)
 			{
-				*(pB + 5) = 2;
+				*(pB + 5) = 'O';
 				i++;
 			}
 			else
@@ -230,7 +299,7 @@ void playerTurn(int* pB)
 		{
 			if (f[c2][c0] == 0)
 			{
-				*(pB + 6) = 2;
+				*(pB + 6) = 'O';
 				i++;
 			}
 			else
@@ -242,7 +311,7 @@ void playerTurn(int* pB)
 		{
 			if (f[c2][c1] == 0)
 			{
-				*(pB + 7) = 2;
+				*(pB + 7) = 'O';
 				i++;
 			}
 			else
@@ -254,7 +323,7 @@ void playerTurn(int* pB)
 		{
 			if (f[c2][c2] == 0)
 			{
-				*(pB + 8) = 2;
+				*(pB + 8) = 'O';
 				i++;
 			}
 			else

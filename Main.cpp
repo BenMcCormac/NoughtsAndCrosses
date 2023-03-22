@@ -38,7 +38,7 @@ int main()
 	printf_s("[ _______  _____  ______     ] \n");
 	printf_s("[    |       |    |          ] \n");
 	printf_s("[    |       |    |          ] \n"),
-		printf_s("[    |       |    |          ] \n");
+	printf_s("[    |       |    |          ] \n");
 	printf_s("[    |     __|__  |_____     ] \n");
 	printf_s("[                            ] \n");
 	printf_s("[ _______  _____  ______     ] \n");

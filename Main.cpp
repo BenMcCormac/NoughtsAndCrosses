@@ -13,7 +13,6 @@ int main()
 	const int RANGE = 2;
 
 	srand(time(0));
-	random = rand();
 
 //for (i = 0; i < 3; i++)
 //{

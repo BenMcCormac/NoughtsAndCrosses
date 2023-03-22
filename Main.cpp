@@ -28,7 +28,7 @@ void wincheck(char grid[3][3]) {
 			else if (grid[i] == "X" || grid[i] == "x")
 				printf("Computer won with row number %i", i + 1); // Should modify printf statements in all three nested for loops to indicate if computer or player won
 			else if (grid[i] == "O" || grid[i] == "o")
-				printf("%c won with row number %i", human[15], i + 1);
+				printf("%c won with row number %i", human[14], i + 1);
 		}
 	}
 
@@ -41,7 +41,7 @@ void wincheck(char grid[3][3]) {
 			else if (grid[j] == "X" || grid[j] == "x")
 				printf("Computer won with column number %i", j + 1); // Should modify printf statements in all three nested for loops to indicate if computer or player won
 			else if (grid[j] == "O" || grid[j] == "o")
-				printf("%c won with column number %i", human[15], j + 1);
+				printf("%c won with column number %i", human[14], j + 1);
 		}
 	}
 
@@ -52,7 +52,7 @@ void wincheck(char grid[3][3]) {
 		else if (grid[k] == "X" || grid[k] == "x")
 			printf("Computer won with descending diagonal from left to right"); // Should modify printf statements in all three nested for loops to indicate if computer or player won
 		else if (grid[k] == "O" || grid[k] == "o")
-			printf("%c won with descending diagonal from left to right", human[15]);
+			printf("%c won with descending diagonal from left to right", human[14]);
 	}
 
 	for (l = 2; l >= 1; l--)
@@ -62,6 +62,6 @@ void wincheck(char grid[3][3]) {
 		else if (grid[l] == "X" || grid[l] == "x")
 			printf("Computer won with ascending diagonal from left to right"); // Should modify printf statements in all three nested for loops to indicate if computer or player won
 		else if (grid[l] == "O" || grid[l] == "o")
-			printf("%c won with ascending diagonal from left to right", human[15]);
+			printf("%c won with ascending diagonal from left to right", human[14]);
 	}
 }

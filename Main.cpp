@@ -1,7 +1,7 @@
 //This Will Be The Main File
 
-int compTurn(int x, int y, int* pB);
-int playerTurn(int* pB);
+void compTurn(int* pB);
+void playerTurn(int* pB);
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,7 +12,7 @@ int main()
 {
 	int randomC, randomR, random3, i, j, z, g = 0;
 	const int GSIZE = 3;
-	int b[GSIZE][GSIZE], grid[GSIZE][GSIZE];
+	int b[GSIZE][GSIZE] = {0}, grid[GSIZE][GSIZE];
 
 
 	//These are my random functions
@@ -35,20 +35,17 @@ int main()
 	randomC = rand() % GSIZE;
 	randomR = rand() % GSIZE;
 
-	int* pB;
-	z = b[0][0];
-	pB = &z;
+	int* pB = &b[0][0];
 
-
-	b[3][3] = playerTurn(pB);
+	playerTurn(pB);
 
 	while (g < 4)
 	{
-		/*Function to generate the computers position*/
-		randomC = rand() % GSIZE;
-		randomR = rand() % GSIZE;
 
-		
+		compTurn(pB);
+
+
+		playerTurn(pB);
 
 		printf("______________________________________________________\n");
 		g++;
@@ -58,11 +55,18 @@ int main()
 
 	return 0;
 }
-int compTurn(int x, int y, int*pB)
+void compTurn(int*pB)
 {
-	int b[3][3];
-	int i, j, h = 0;
+	int f[3][3] = { *(pB + 0), *(pB + 1), *(pB + 2), *(pB + 3), *(pB + 4), *(pB + 5), *(pB + 6), *(pB + 7), *(pB + 8), };
+	int i, j, h = 0, x, y, t = 0;
 	const int GSIZE = 3;
+	int* p;
+
+	while (h < 1)
+	{
+		/*Function to generate the computers position*/
+		x = rand() % GSIZE;
+		y = rand() % GSIZE;
 
 		for (i = 0; i < 3; i++)
 		{
@@ -71,26 +75,78 @@ int compTurn(int x, int y, int*pB)
 			{
 
 				/*If there is nothing in the random spot it will put its piece there*/
-				if (b[y][x] == 0) 
+				if (f[y][x] == 0)
 				{
-					/*Showing which spot the computer picked*/
-					printf("%i____%d\n", x, y);
+					if (t == 0)
+					{
+						/*Showing which spot the computer picked*/
+						printf("%i____%d\n", x, y);
+						t++;
+					}
 
-					/*If we make the computer place 1s and the player place 2s it will be easier for Eoghan to make the loop for the grid.*/
-					b[y][x] = 1;
+					/*Made the computer place 1s and 2s in place of Xs and Os.*/
+
+					if (y == 0)
+					{
+						if (x == 0)
+						{
+							*(pB + 0) = 1;
+						}
+						if (x == 1)
+						{
+							*(pB + 1) = 1;
+						}
+						if (x == 2)
+						{
+							*(pB + 2) = 1;
+						}
+					}
+					if (y == 1)
+					{
+						if (x == 0)
+						{
+							*(pB + 3) = 1;
+						}
+						if (x == 1)
+						{
+							*(pB + 4) = 1;
+						}
+						if (x == 2)
+						{
+							*(pB + 5) = 1;
+						}
+					}
+					if (y == 2)
+					{
+						if (x == 0)
+						{
+							*(pB + 6) = 1;
+						}
+						if (x == 1)
+						{
+							*(pB + 7) = 1;
+						}
+						if (x == 2)
+						{
+							*(pB + 8) = 1;
+						}
+					}
 
 					h++;
 				}
-				printf("	%i", b[i][j]);
+				printf("	%i", f[i][j]);
 			}
 			printf("\n");
 		}
-		return *pB;
+	}
 }
-int playerTurn(int* pB)
+void playerTurn(int* pB)
 {
 	int i = 0, p;
-	int b[3][3];
+	int c1 = 1, c0 = 0, c2 = 2;
+	int f[3][3] = { *(pB + 0), *(pB + 1), *(pB + 2), *(pB + 3), *(pB + 4), *(pB + 5), *(pB + 6), *(pB + 7), *(pB + 8), };
+
+
 
 	printf("Please choose where your mark goes:  ");
 
@@ -100,9 +156,9 @@ int playerTurn(int* pB)
 
 		if (p == 1)
 		{
-			if (b[0][0] == 0)
+			if (f[c0][c0] == 0)
 			{
-				b[0][0] = 2;
+				*(pB+0) = 2;
 				i++;
 			}
 			else
@@ -112,9 +168,9 @@ int playerTurn(int* pB)
 		}
 		else if (p == 2)
 		{
-			if (b[0][1] == 0)
+			if (f[c0][c1] == 0)
 			{
-				b[0][1] = 2;
+				*(pB + 1) = 2;
 				i++;
 			}
 			else
@@ -124,9 +180,9 @@ int playerTurn(int* pB)
 		}
 		else if (p == 3)
 		{
-			if (b[0][2] == 0)
+			if (f[c0][c2] == 0)
 			{
-				b[0][2] = 2;
+				*(pB + 2) = 2;
 				i++;
 			}
 			else
@@ -136,9 +192,9 @@ int playerTurn(int* pB)
 		}
 		else if (p == 4)
 		{
-			if (b[1][0] == 0)
+			if (f[c1][c0] == 0)
 			{
-				b[1][0] = 2;
+				*(pB + 3) = 2;
 				i++;
 			}
 			else
@@ -148,9 +204,9 @@ int playerTurn(int* pB)
 		}
 		else if (p == 5)
 		{
-			if (b[1][1] == 0)
+			if (f[c1][c1] == 0)
 			{
-				b[1][1] = 2;
+				*(pB + 4) = 2;
 				i++;
 			}
 			else
@@ -160,9 +216,9 @@ int playerTurn(int* pB)
 		}
 		else if (p == 6)
 		{
-			if (b[1][2] == 0)
+			if (f[c1][c2] == 0)
 			{
-				b[1][2] = 2;
+				*(pB + 5) = 2;
 				i++;
 			}
 			else
@@ -172,9 +228,9 @@ int playerTurn(int* pB)
 		}
 		else if (p == 7)
 		{
-			if (b[2][0] == 0)
+			if (f[c2][c0] == 0)
 			{
-				b[2][0] = 2;
+				*(pB + 6) = 2;
 				i++;
 			}
 			else
@@ -184,9 +240,9 @@ int playerTurn(int* pB)
 		}
 		else if (p == 8)
 		{
-			if (b[2][1] == 0)
+			if (f[c2][c1] == 0)
 			{
-				b[2][1] = 2;
+				*(pB + 7) = 2;
 				i++;
 			}
 			else
@@ -196,9 +252,9 @@ int playerTurn(int* pB)
 		}
 		else if (p == 9)
 		{
-			if (b[2][2] == 0)
+			if (f[c2][c2] == 0)
 			{
-				b[2][2] = 2;
+				*(pB + 8) = 2;
 				i++;
 			}
 			else
@@ -207,5 +263,4 @@ int playerTurn(int* pB)
 			}
 		}
 	}
-	return b[3][3];
 }

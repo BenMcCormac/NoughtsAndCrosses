@@ -3,108 +3,130 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <conio.h>
+#include <time.h>
 
 void wincheck(char grid[3][3]);
 
 int main()
 {
-	int board[3][3];
-	int random, i, j;
-	const int RANGE = 2;
+	int randomC, randomR, random3, i, j, z, g = 0;
+	const int GSIZE = 3;
+	char b[GSIZE][GSIZE] = { 0 };
 
+
+	//These are my random functions
 	srand(time(0));
 
-//for (i = 0; i < 3; i++)
-//{
-//	for (j = 0; j < 3; j++)
-//		{
-//			random = rand() % RANGE;
-//			printf("%i  ", random);
-//		}
-//		printf("\n");
-//	}
 
-    char grid[10] = { '0','1','2','3','4','5','6','7','8','9' };
+	//Random number testing
+	//for (i = 0; i < 3; i++)
+	//{
+	//	for (j = 0; j < 3; j++)
+	//		{
+	//			random1 = rand() % GSIZE;
+	//			printf("%i  ", randomR);
+	//		}
+	//		printf("\n");
+	//}
 
-    printf_s("[~~~~~~~~~~~~~~~~~~~~~~~~~~~~]\n");
-    printf_s("[ _______  _____  ______     ] \n");
-    printf_s("[    |       |    |          ] \n");
-    printf_s("[    |       |    |          ] \n"),
-        printf_s("[    |       |    |          ] \n");
-    printf_s("[    |     __|__  |_____     ] \n");
-    printf_s("[                            ] \n");
-    printf_s("[ _______  _____  ______     ] \n");
-    printf_s("[    |    |    |  |          ] \n");
-    printf_s("[    |    |____|  |          ] \n");
-    printf_s("[    |    |    |  |          ] \n");
-    printf_s("[    |    |    |  |_____     ] \n");
-    printf_s("[                            ] \n");
-    printf_s("[ _______  _____  ______     ] \n");
-    printf_s("[    |     |   |  |          ] \n");
-    printf_s("[    |     |   |  |_____     ] \n");
-    printf_s("[    |     |   |  |          ] \n");
-    printf_s("[    |     |___|  |_____     ] \n");
-    printf_s("[~~~~~~~~~~~~~~~~~~~~~~~~~~~~] \n");
-    printf_s("                               \n");
+		/*While loop for maximun game turns*/
 
-    int player = 1;
-    int choice, i;
+	char grid[10] = { '0','1','2','3','4','5','6','7','8','9' };
 
-    char mark;
+	printf_s("[~~~~~~~~~~~~~~~~~~~~~~~~~~~~]\n");
+	printf_s("[ _______  _____  ______     ] \n");
+	printf_s("[    |       |    |          ] \n");
+	printf_s("[    |       |    |          ] \n"),
+		printf_s("[    |       |    |          ] \n");
+	printf_s("[    |     __|__  |_____     ] \n");
+	printf_s("[                            ] \n");
+	printf_s("[ _______  _____  ______     ] \n");
+	printf_s("[    |    |    |  |          ] \n");
+	printf_s("[    |    |____|  |          ] \n");
+	printf_s("[    |    |    |  |          ] \n");
+	printf_s("[    |    |    |  |_____     ] \n");
+	printf_s("[                            ] \n");
+	printf_s("[ _______  _____  ______     ] \n");
+	printf_s("[    |     |   |  |          ] \n");
+	printf_s("[    |     |   |  |_____     ] \n");
+	printf_s("[    |     |   |  |          ] \n");
+	printf_s("[    |     |___|  |_____     ] \n");
+	printf_s("[~~~~~~~~~~~~~~~~~~~~~~~~~~~~] \n");
+	printf_s("                               \n");
 
-    {
-        player = (player % 2) ? 1 : 2;
+	int player = 1;
+	int choice;
 
-        printf("Player %d\nStart-->", player);
-        scanf_s("%d", &choice);
+	char mark;
 
 
-        mark = (player == 1) ? 'X' : 'O';
 
-        if (choice == 1 && grid[1] == '1')
-            grid[1] = mark;
+	printf_s("________________\n");
+	printf_s("|    |    |    |\n");
+	printf_s("|   %c|  %c |  %c |\n", b[0][0], b[0][1], b[0][2]);
+	printf_s("|____|____|____|\n");
+	printf_s("|    |    |    |\n");
+	printf_s("|   %c|  %c |  %c |\n", b[1][0], b[1][1], b[1][2]);
+	printf_s("|____|____|____|\n");
+	printf_s("|    |    |    |\n");
+	printf_s("|   %c|  %c |  %c |\n", b[2][0], b[2][1], b[2][2]);
+	printf_s("|____|____|____|\n");
 
-        else if (choice == 2 && grid[2] == '2')
-            grid[2] = mark;
 
-        else if (choice == 3 && grid[3] == '3')
-            grid[3] = mark;
+	randomC = rand() % GSIZE;
+	randomR = rand() % GSIZE;
 
-        else if (choice == 4 && grid[4] == '4')
-            grid[4] = mark;
+	char* pB = &b[0][0];
 
-        else if (choice == 5 && grid[5] == '5')
-            grid[5] = mark;
+	playerTurn(pB);
 
-        else if (choice == 6 && grid[6] == '6')
-            grid[6] = mark;
+	while (g < 4)
+	{
+		printf_s("________________\n");
+		printf_s("|    |    |    |\n");
+		printf_s("|   %c|  %c |  %c |\n", b[0][0], b[0][1], b[0][2]);
+		printf_s("|____|____|____|\n");
+		printf_s("|    |    |    |\n");
+		printf_s("|   %c|  %c |  %c |\n", b[1][0], b[1][1], b[1][2]);
+		printf_s("|____|____|____|\n");
+		printf_s("|    |    |    |\n");
+		printf_s("|   %c|  %c |  %c |\n", b[2][0], b[2][1], b[2][2]);
+		printf_s("|____|____|____|\n");
 
-        else if (choice == 7 && grid[7] == '7')
-            grid[7] = mark;
+		compTurn(pB);
+		wincheck(b);
 
-        else if (choice == 8 && grid[8] == '8')
-            grid[8] = mark;
+		printf_s("________________\n");
+		printf_s("|    |    |    |\n");
+		printf_s("|   %c|  %c |  %c |\n", b[0][0], b[0][1], b[0][2]);
+		printf_s("|____|____|____|\n");
+		printf_s("|    |    |    |\n");
+		printf_s("|   %c|  %c |  %c |\n", b[1][0], b[1][1], b[1][2]);
+		printf_s("|____|____|____|\n");
+		printf_s("|    |    |    |\n");
+		printf_s("|   %c|  %c |  %c |\n", b[2][0], b[2][1], b[2][2]);
+		printf_s("|____|____|____|\n");
 
-        else if (choice == 9 && grid[9] == '9')
-            grid[9] = mark;
+		playerTurn(pB);
+		wincheck(b);
 
-        else
-        {
-            printf("Incorrect move\n try again");
+		printf("______________________________________________________\n");
+		g++;
+	}
 
-        }
+	printf_s("________________\n");
+	printf_s("|    |    |    |\n");
+	printf_s("|   %c|  %c |  %c |\n", b[0][0], b[0][1], b[0][2]);
+	printf_s("|____|____|____|\n");
+	printf_s("|    |    |    |\n");
+	printf_s("|   %c|  %c |  %c |\n", b[1][0], b[1][1], b[1][2]);
+	printf_s("|____|____|____|\n");
+	printf_s("|    |    |    |\n");
+	printf_s("|   %c|  %c |  %c |\n", b[2][0], b[2][1], b[2][2]);
+	printf_s("|____|____|____|\n");
 
-        printf_s("________________\n");
-        printf_s("|    |    |    |\n");
-        printf_s("|   %c|  %c |  %c |\n", grid[9], grid[8], grid[7]);
-        printf_s("|____|____|____|\n");
-        printf_s("|    |    |    |\n");
-        printf_s("|   %c|  %c |  %c |\n", grid[6], grid[5], grid[4]);
-        printf_s("|____|____|____|\n");
-        printf_s("|    |    |    |\n");
-        printf_s("|   %c|  %c |  %c |\n", grid[3], grid[2], grid[1]);
-        printf_s("|____|____|____|\n");
-    }
+	wincheck(b);
 
 	return 0;
 }

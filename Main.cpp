@@ -8,13 +8,14 @@ void playerTurn(char* pB);
 #include <conio.h>
 #include <time.h>
 
-void wincheck(char grid[3][3]);
+int wincheck(char* pB);
 
 int main()
 {
 	int randomC, randomR, random3, i, j, z, g = 0;
 	const int GSIZE = 3;
 	char b[GSIZE][GSIZE] = { 0 };
+	int winCheck = 0;
 
 
 	//These are my random functions
@@ -96,8 +97,13 @@ int main()
 		printf_s("|   %c|  %c |  %c |\n", b[2][0], b[2][1], b[2][2]);
 		printf_s("|____|____|____|\n");
 
+		if (winCheck == 1)
+		{
+			return 0;
+		}
+
 		compTurn(pB);
-		wincheck(b);
+		winCheck = wincheck(pB);
 
 		printf_s("________________\n");
 		printf_s("|    |    |    |\n");
@@ -110,8 +116,13 @@ int main()
 		printf_s("|   %c|  %c |  %c |\n", b[2][0], b[2][1], b[2][2]);
 		printf_s("|____|____|____|\n");
 
+		if (winCheck == 1)
+		{
+			return 0;
+		}
+
 		playerTurn(pB);
-		wincheck(b);
+		winCheck = wincheck(pB);
 
 		printf("______________________________________________________\n");
 		g++;
@@ -128,7 +139,32 @@ int main()
 	printf_s("|   %c|  %c |  %c |\n", b[2][0], b[2][1], b[2][2]);
 	printf_s("|____|____|____|\n");
 
-	wincheck(b);
+	if (winCheck == 1)
+	{
+		return 0;
+	}
+
+	winCheck = wincheck(pB);
+
+	printf_s("________________\n");
+	printf_s("|    |    |    |\n");
+	printf_s("|   %c|  %c |  %c |\n", b[0][0], b[0][1], b[0][2]);
+	printf_s("|____|____|____|\n");
+	printf_s("|    |    |    |\n");
+	printf_s("|   %c|  %c |  %c |\n", b[1][0], b[1][1], b[1][2]);
+	printf_s("|____|____|____|\n");
+	printf_s("|    |    |    |\n");
+	printf_s("|   %c|  %c |  %c |\n", b[2][0], b[2][1], b[2][2]);
+	printf_s("|____|____|____|\n");
+
+	if (winCheck == 1)
+	{
+		return 0;
+	}
+	else
+	{
+		printf("It is a tie");
+	}
 
 	return 0;
 }
@@ -339,44 +375,55 @@ void playerTurn(char* pB)
 		}
 	}
 }
-void wincheck(char grid[3][3]) {
+int wincheck(char* pB) {
 	// Call this function with wincheck(board); in int main()
 	int i, j, k, l; // i is the variable for rows, j is the variable for columns, k is the variable for checking the first diagonal, l is the variable for checking the second diagonal
-	char human[15] = "";
+	int wC = 0;
+	char human[15] = "Player";
+	char grid[3][3] = { *(pB + 0), *(pB + 1), *(pB + 2), *(pB + 3), *(pB + 4), *(pB + 5), *(pB + 6), *(pB + 7), *(pB + 8), };
+
 	for (i = 0; i <= 2; i++) // Checks each row
 	{
-		for (j = 0; j < 2; j++)
+		for (j = 0; j <= 2; j++)
 		{
 			if (grid[i][j] != grid[i][j + 1])
 			{
 				break;
 			}
-			else if (grid[i] == "X" || grid[i] == "x")
+			else if (grid[i][0] == 'X' && grid[i][1] == 'X' && grid[i][2] == 'X')
 			{
-				printf("Computer won with row number %i", i + 1); // Should modify printf statements in all three nested for loops to indicate if computer or player won
+				printf("Computer won with row number %i\n", i + 1); // Should modify printf statements in all three nested for loops to indicate if computer or player won
+				wC = 1;
+				break;
 			}
-			else if (grid[i] == "O" || grid[i] == "o")
+			else if (grid[i][0] == 'O' && grid[i][1] == 'O' && grid[i][2] == 'O')
 			{
-				printf("%c won with row number %i", human[14], i + 1);
+				printf("%c won with row number %i\n", human[14], i + 1);
+				wC = 1;
+				break;
 			}
 		}
 	}
 
 	for (j = 0; j <= 2; j++) // Checks each column
 	{
-		for (i = 0; i < 2; i++)
+		for (i = 0; i <= 2; i++)
 		{
 			if (grid[i][j] != grid[i + 1][j])
 			{
 				break;
 			}
-			else if (grid[j] == "X" || grid[j] == "x")
+			else if (grid[0][j] == 'X' && grid[1][j] == 'X' && grid[2][j] == 'X')
 			{
-				printf("Computer won with column number %i", j + 1); // Should modify printf statements in all three nested for loops to indicate if computer or player won
+				printf("Computer won with column number %i\n", j + 1); // Should modify printf statements in all three nested for loops to indicate if computer or player won
+				wC = 1;
+				break;
 			}
-			else if (grid[j] == "O" || grid[j] == "o")
+			else if (grid[0][j] == 'O' && grid[1][j] == 'O' && grid[2][j] == 'O')
 			{
-				printf("%c won with column number %i", human[14], j + 1);
+				printf("%c won with column number %i\n", human[14], j + 1);
+				wC = 1;
+				break;
 			}
 		}
 	}
@@ -387,13 +434,17 @@ void wincheck(char grid[3][3]) {
 		{
 			break;
 		}
-		else if (grid[k] == "X" || grid[k] == "x")
+		else if (grid[0][0] == 'X' && grid[1][1] == 'X' && grid[2][2] == 'X')
 		{
-			printf("Computer won with descending diagonal from left to right"); // Should modify printf statements in all three nested for loops to indicate if computer or player won
+			printf("Computer won with descending diagonal from left to right\n"); // Should modify printf statements in all three nested for loops to indicate if computer or player won
+			wC = 1;
+			break;
 		}
-		else if (grid[k] == "O" || grid[k] == "o")
+		else if (grid[0][0] == 'O' && grid[1][1] == 'O' && grid[2][2] == 'O')
 		{
-			printf("%c won with descending diagonal from left to right", human[14]);
+			printf("%c won with descending diagonal from left to right\n", human[14]);
+			wC = 1;
+			break;
 		}
 	}
 
@@ -403,12 +454,19 @@ void wincheck(char grid[3][3]) {
 		{
 			break;
 		}
-		else if (grid[l] == "X" || grid[l] == "x")
+		else if (grid[0][2] == 'X' && grid[1][1] == 'X' && grid[2][0] == 'X')
 		{
-			printf("Computer won with ascending diagonal from left to right"); // Should modify printf statements in all three nested for loops to indicate if computer or player won
+			printf("Computer won with ascending diagonal from left to right\n"); // Should modify printf statements in all three nested for loops to indicate if computer or player won
+			wC = 1;
+			break;
 		}
-		else if (grid[l] == "O" || grid[l] == "o") {
-			printf("%c won with ascending diagonal from left to right", human[14]);
+		else if (grid[0][2] == 'O' && grid[1][1] == 'O' && grid[2][0] == 'O')
+		{
+			printf("%c won with ascending diagonal from left to right\n", human[14]);
+			wC = 1;
+			break;
 		}
 	}
+
+	return wC;
 }
